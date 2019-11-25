@@ -15,7 +15,7 @@ import { HelloWorldResolver } from "./resolvers/HelloWorldResolver";
 
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
-      resolvers: [HelloWorldResolver],
+      resolvers: [HelloWorldResolver, MovieResolver],
       validate: true
     }),
     context: ({ req, res }) => ({ req, res })
