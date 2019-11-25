@@ -26,6 +26,15 @@ export class MovieResolver {
     return movie;
   }
 
+  @Mutation(() => Boolean)
+  async updateMovie(
+    @Arg("id", () => Int) id: number,
+    @Arg("input", () => MovieInput) input: MovieInput
+  ) {
+    await Movie.update({ id }, input);
+    return true;
+  }
+
   @Query(() => [Movie])
   movies() {
     return Movie.find();
