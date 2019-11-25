@@ -1,10 +1,19 @@
-import { Resolver, Mutation, Arg } from "type-graphql";
+import { Resolver, Mutation, Arg, Int, Query } from "type-graphql";
+import { Movie } from "../entity/Movie";
 
 @Resolver()
 export class MovieResolver {
   @Mutation(() => Boolean)
-  createMovie(@Arg("title", () => String) title: string) {
-    console.log(title);
+  async createMovie(
+    @Arg("title") title: string,
+    @Arg("minutes", () => Int) minutes: number
+  ) {
+    await Movie.insert({ title, minutes });
     return true;
+  }
+
+  @Query(() => )
+  movies() {
+      return Movie.find();
   }
 }
