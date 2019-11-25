@@ -4,6 +4,7 @@ import express from "express";
 import { ApolloServer } from "apollo-server-express";
 import { buildSchema } from "type-graphql";
 import { HelloWorldResolver } from "./resolvers/HelloWorldResolver";
+import { MovieResolver } from "./resolvers/MovieResolver";
 
 (async () => {
   const app = express();
