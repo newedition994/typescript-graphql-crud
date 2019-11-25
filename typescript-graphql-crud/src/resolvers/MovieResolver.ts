@@ -20,10 +20,10 @@ class MovieInput {
 
 @Resolver()
 export class MovieResolver {
-  @Mutation(() => Boolean)
+  @Mutation(() => Movie)
   async createMovie(@Arg("options", () => MovieInput) options: MovieInput) {
-    await Movie.insert(options);
-    return true;
+    const movie = await Movie.create(options).save();
+    return movie;
   }
 
   @Query(() => [Movie])
